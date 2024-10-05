@@ -1,15 +1,15 @@
 import TitleField from "@/components/titleField/TitleField";
-import IconBag from "@/icons/IconBag";
-import IconGender from "@/icons/IconGender";
-import IconHourglass from "@/icons/IconHourglass";
-import IconRank from "@/icons/IconRank";
-import IconUSerAcount from "@/icons/IconUSerAcount";
+import IconBag from "@/components/icons/IconBag";
+import IconGender from "@/components/icons/IconGender";
+import IconHourglass from "@/components/icons/IconHourglass";
+import IconRank from "@/components/icons/IconRank";
+import IconUSerAcount from "@/components/icons/IconUSerAcount";
 import React from "react";
 
 const GeneralInfo = () => {
   return (
-    <div className="bg-secondary rounded-xl p-5">
-      <TitleField Children={"Thông tin chung"}></TitleField>
+    <div className="bg-secondary rounded-xl p-5 text-sm">
+      <TitleField children={"Thông tin chung"}></TitleField>
       <div className="flex flex-col gap-5 mx-5 mt-5">
         <ItemInfo
           icon={<IconRank></IconRank>}

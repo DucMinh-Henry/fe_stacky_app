@@ -1,13 +1,13 @@
 import React from "react";
-import imgCompany from "@/image/imgCompany.png";
-import IconUSerAcount from "@/icons/IconUSerAcount";
-import IconField from "@/icons/IconField";
-import IconLocation from "@/icons/IconLocation";
-import IconSeeCompany from "@/icons/IconSeeCompany";
+import imgCompany from "@/components/image/imgCompany.png";
+import IconUSerAcount from "@/components/icons/IconUSerAcount";
+import IconField from "@/components/icons/IconField";
+import IconLocation from "@/components/icons/IconLocation";
+import IconSeeCompany from "@/components/icons/IconSeeCompany";
 
 const CompanyInfo = () => {
   return (
-    <div className="bg-secondary rounded-xl p-5">
+    <div className="bg-secondary rounded-xl p-5 text-sm">
       <div className="flex items-center gap-3 mb-4">
         <div className="min-w-[80px] min-h-[80px]">
           <a href="">

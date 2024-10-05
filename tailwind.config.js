@@ -28,6 +28,9 @@ module.exports = {
         white: "#FFFFFF",
         error: "#EB5757",
         button: "#6112C9",
+        border: "#424242",
+        accepted: "#22C55E",
+        rejected: "#EF4444",
       },
       borderRadius: {
         // lg: "var(--radius)",

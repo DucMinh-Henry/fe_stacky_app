@@ -1,11 +1,11 @@
 import React from "react";
-import IconPrice from "@/icons/IconPrice";
-import IconTimer from "@/icons/IconTimer";
-import IconLocation from "@/icons/IconLocation";
-import IconHourglass from "@/icons/IconHourglass";
+import IconPrice from "@/components/icons/IconPrice";
+import IconTimer from "@/components/icons/IconTimer";
+import IconLocation from "@/components/icons/IconLocation";
+import IconHourglass from "@/components/icons/IconHourglass";
 import Button from "@/components/button/Button";
-import IconSend from "@/icons/IconSend";
-import IconHeart from "@/icons/IconHeart";
+import IconSend from "@/components/icons/IconSend";
+import IconHeart from "@/components/icons/IconHeart";
 
 const JobSummary = () => {
   return (

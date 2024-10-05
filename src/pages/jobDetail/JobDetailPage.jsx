@@ -12,8 +12,9 @@ import JobContact from "./JobContact";
 const JobDetailPage = () => {
   return (
     <div>
-      <Heading></Heading>
-      <SearchJob></SearchJob>
+      <div className="flex justify-center items-center bg-primary py-4">
+        <SearchJob></SearchJob>
+      </div>
       <div className="page-container grid grid-cols-12 gap-7 py-10">
         <div className="grid col-start-1 col-end-9 gap-7 h-fit">
           <JobSummary></JobSummary>
@@ -26,7 +27,6 @@ const JobDetailPage = () => {
           <JobSuggest></JobSuggest>
         </div>
       </div>
-      <Footer></Footer>
     </div>
   );
 };

@@ -16,7 +16,7 @@ const Button = ({
     children
   );
   let defaultClassName =
-    "flex items-center justify-center text-base font-semibold rounded-xl min-h-[48px]";
+    "flex items-center justify-center text-base font-semibold rounded-xl h-[48px] hover:opacity-90";
   switch (rest.kind) {
     case "primary":
       defaultClassName = defaultClassName + " bg-primary text-white";
@@ -26,7 +26,7 @@ const Button = ({
       break;
     case "ghost":
       defaultClassName =
-        defaultClassName + " bg-secondary bg-opacity-10 text-secondary";
+        defaultClassName + " bg-white bg-opacity-10 text-text1";
       break;
 
     default:

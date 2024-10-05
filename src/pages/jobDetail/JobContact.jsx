@@ -4,7 +4,7 @@ import React from "react";
 const JobContact = () => {
   return (
     <div className="bg-secondary rounded-xl p-5">
-      <TitleField Children={"Thông tin liên hệ"}></TitleField>
+      <TitleField children={"Thông tin liên hệ"}></TitleField>
       <div className="px-5">
         <div className="mt-5">
           <Item title={"Tên liên hệ:"} Children={"Phòng Nhân Sự"}></Item>

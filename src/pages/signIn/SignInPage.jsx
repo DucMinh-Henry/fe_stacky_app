@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BgSignIn from "@/components/image/bgSignIn.jpg";
 import FormSignInCandidate from "./FormSignInCandidate";
 import FormSignInEmployer from "./FormSignInEmployer";
@@ -6,6 +6,16 @@ import FormRegisterEmployer from "./FormRegisterEmployer";
 
 const SignInPage = () => {
   const [activeTab, setActiveTab] = useState("candidate");
+
+  
+  useEffect(() => {
+    const fetchingData = async () => {
+      const res = await fetch("....")
+      const data = await res.json()
+      setData(data)
+    }
+    fetchingData()
+  }, [])
 
   return (
     <div>

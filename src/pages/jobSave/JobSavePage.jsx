@@ -14,7 +14,7 @@ const JobSavePage = () => {
             ngay để không bỏ lỡ cơ hội nghề nghiệp dành cho bạn.
           </p>
         </div>
-        <div className="p-10">
+        <div className="px-10 py-5">
           <p className="mb-5">Danh sách {"6"} việc làm đã lưu</p>
           <div className="flex flex-col gap-5">
             <ItemJobSave></ItemJobSave>

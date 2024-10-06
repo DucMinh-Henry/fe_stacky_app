@@ -1,8 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
@@ -10,19 +10,13 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/Checkbox";
 import Button from "@/components/button/Button";
 import { registerEmployerSchema } from "@/constants/validationFormRegisterEmployer";
 import axiosInstance from "@/lib/authorizedAxios";
 import toast from "react-hot-toast";
+import InputField from "@/components/fieldForm/InputField";
+import SelectField from "@/components/fieldForm/SelectField";
 
 const FormRegisterEmployer = () => {
   const form = useForm({
@@ -174,56 +168,5 @@ const FormRegisterEmployer = () => {
     </div>
   );
 };
-
-const InputField = ({ control, name, placeholder, type = "text" }) => (
-  <FormField
-    control={control}
-    name={name}
-    render={({ field }) => (
-      <FormItem>
-        <FormControl>
-          <>
-            <Label htmlFor={name}>{placeholder}</Label>
-            <Input
-              type={type}
-              placeholder={`Nhập ${placeholder.toLowerCase()}`}
-              {...field}
-            />
-          </>
-        </FormControl>
-        <FormMessage />
-      </FormItem>
-    )}
-  />
-);
-
-const SelectField = ({ control, name, placeholder, options }) => (
-  <FormField
-    control={control}
-    name={name}
-    render={({ field }) => (
-      <FormItem>
-        <Label htmlFor={name}>{placeholder}</Label>
-        <Select value={field.value} onValueChange={field.onChange}>
-          <FormControl>
-            <SelectTrigger className="w-full px-6 h-12 text-sm font-medium border border-[#424242] rounded-xl">
-              <SelectValue placeholder={`Chọn ${placeholder.toLowerCase()}`} />
-            </SelectTrigger>
-          </FormControl>
-          <SelectContent>
-            <SelectGroup>
-              {options.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <FormMessage />
-      </FormItem>
-    )}
-  />
-);
 
 export default FormRegisterEmployer;

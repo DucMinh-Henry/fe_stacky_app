@@ -1,10 +1,7 @@
 import React, { useCallback, useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import IconEmail from "@/components/icons/IconEmail";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import IconPassword from "@/components/icons/IconPassword";
 import Button from "@/components/button/Button";
 import {
@@ -20,6 +17,7 @@ import { LoginRecruiterSchema } from "@/constants/validationFormLoginRecruiter";
 import axiosInstance from "@/lib/authorizedAxios";
 import toast from "react-hot-toast";
 import useAuth from "@/hooks/useAuth";
+import InputField from "@/components/fieldForm/InputField";
 
 const FormSignInEmployer = () => {
   const navigate = useNavigate();
@@ -39,6 +37,8 @@ const FormSignInEmployer = () => {
   const onSubmit = useCallback(
     async (values) => {
       setLoading(true); // Bắt đầu loading
+      console.log(values);
+
       try {
         const { email, password } = values;
 
@@ -47,6 +47,8 @@ const FormSignInEmployer = () => {
           email,
           password,
         });
+
+        console.log(data);
 
         const { userId, email: userEmail, role: roleName, accessToken } = data;
 
@@ -81,51 +83,17 @@ const FormSignInEmployer = () => {
           className="space-y-4 mb-5 w-full"
           onSubmit={form.handleSubmit(onSubmit)}
         >
-          <FormField
+          <InputField
             control={form.control}
             name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <>
-                    <Label htmlFor="email">Email</Label>
-                    <div className="flex items-center w-full relative">
-                      <Input
-                        id="email" // Associate label with input
-                        placeholder="Nhập email"
-                        className="pl-10 pr-4"
-                        {...field}
-                      />
-                      <IconEmail className="absolute ml-2" />
-                    </div>
-                  </>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            placeholder="Email"
+            icon={<IconEmail />}
           />
-          <FormField
+          <InputField
             control={form.control}
             name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <>
-                    <Label htmlFor="password">Mật khẩu</Label>
-                    <div className="flex items-center w-full relative">
-                      <Input
-                        id="password" // Associate label with input
-                        placeholder="Nhập mật khẩu"
-                        className="pl-10 pr-4 outline-input"
-                        {...field}
-                      />
-                      <IconPassword className="absolute ml-2" />
-                    </div>
-                  </>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            placeholder="Password"
+            icon={<IconPassword />}
           />
           <div className="w-full">
             <Button

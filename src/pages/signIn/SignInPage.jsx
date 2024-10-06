@@ -7,16 +7,6 @@ import FormRegisterEmployer from "./FormRegisterEmployer";
 const SignInPage = () => {
   const [activeTab, setActiveTab] = useState("candidate");
 
-  
-  useEffect(() => {
-    const fetchingData = async () => {
-      const res = await fetch("....")
-      const data = await res.json()
-      setData(data)
-    }
-    fetchingData()
-  }, [])
-
   return (
     <div>
       <div className="page-container grid grid-cols-12 justify-center items-center gap-10 my-10">

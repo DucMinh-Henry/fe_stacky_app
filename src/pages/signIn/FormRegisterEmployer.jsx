@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Form,
@@ -12,11 +11,12 @@ import {
 } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/Checkbox";
 import Button from "@/components/button/Button";
-import { registerEmployerSchema } from "@/constants/validationFormRegisterEmployer";
+import { z } from "zod"; // Import Zod for validation
 import axiosInstance from "@/lib/authorizedAxios";
 import toast from "react-hot-toast";
 import InputField from "@/components/fieldForm/InputField";
 import SelectField from "@/components/fieldForm/SelectField";
+import { registerEmployerSchema } from "@/constants/validationFormRegisterEmployer";
 
 const FormRegisterEmployer = () => {
   const form = useForm({
@@ -30,7 +30,6 @@ const FormRegisterEmployer = () => {
       orgField: "",
       orgScale: "",
       orgAddress: "",
-      termsAccepted: false,
     },
   });
 
@@ -38,12 +37,33 @@ const FormRegisterEmployer = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axiosInstance.post(`/auth/signup/recruiter`, data);
+      registerEmployerSchema.parse(data); // Validate the form data
+      const { confirmPassword, ...formData } = data; // Extract fields to exclude
+
+      const response = await axiosInstance.post(
+        `/auth/signup/recruiter`,
+        formData
+      );
       toast.success("Đăng kí thành công!!!");
-      console.log(response.data);
-      // Navigate to another page if needed
+      // console.log("Response Data:", response.data); // Log the successful response
     } catch (error) {
-      toast.error("Đăng ký thất bại! Vui lòng kiểm tra lại thông tin.");
+      // Handle error
+      if (error.response) {
+        if (error.response.status === 409) {
+          // Nếu email đã tồn tại
+          toast.error("Email này đã tồn tại! Vui lòng nhập email khác.");
+        } else {
+          toast.error("Đăng ký thất bại! Vui lòng kiểm tra lại thông tin.");
+        }
+        // console.error(
+        //   "Request failed with status code:",
+        //   error.response.status
+        // );
+        // console.error("Response data:", error.response.data);
+      } else {
+        console.error("Error in request setup:", error.message);
+        toast.error("Có lỗi xảy ra. Vui lòng thử lại.");
+      }
     }
   };
 

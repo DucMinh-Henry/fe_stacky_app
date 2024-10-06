@@ -37,8 +37,6 @@ const FormSignInEmployer = () => {
   const onSubmit = useCallback(
     async (values) => {
       setLoading(true); // Bắt đầu loading
-      console.log(values);
-
       try {
         const { email, password } = values;
 

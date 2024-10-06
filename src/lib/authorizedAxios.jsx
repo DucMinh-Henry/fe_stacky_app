@@ -78,11 +78,11 @@ const onErrorResponse = async (error) => {
       });
     }
 
-    if (error.response?.status !== 410) {
-      toast.error(
-        `🚨 [API] | Error ${error.response?.data?.message || message}`
-      );
-    }
+    // if (error.response?.status !== 410) {
+    //   toast.error(
+    //     `🚨 [API] | Error ${error.response?.data?.message || message}`
+    //   );
+    // }
   } else {
     const errorMessage = error?.message || "Unknown error";
     logOnDev(`🚨 [API] | Error ${errorMessage}`);

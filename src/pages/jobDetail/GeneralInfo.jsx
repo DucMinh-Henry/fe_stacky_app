@@ -27,7 +27,7 @@ const GeneralInfo = () => {
           children={"2 Người"}
         ></ItemInfo>
         <ItemInfo
-          icon={<IconBag></IconBag>}
+          icon={<IconBag className={"w-6 h-6"} color={"#fff"}></IconBag>}
           title={"Loại công việc"}
           children={"Nhân viên toàn thời gian"}
         ></ItemInfo>

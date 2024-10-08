@@ -1,5 +1,3 @@
-import Footer from "@/components/shared/footer/Footer";
-import Heading from "@/components/shared/header/Heading";
 import React from "react";
 import FormProfile from "./FormProfile";
 import Panel from "@/components/panel/Panel";
@@ -21,17 +19,17 @@ const CvInformationPage = () => {
   const form = useForm({
     resolver: zodResolver(profileCVSchema),
     defaultValues: {
-      name: "",
-      position: "",
-      email: "",
-      phone: "",
+      fullName: "",
+      jobPosition: "",
+      publicEmail: "",
+      phoneNumber: "",
       gender: "",
-      dob: null,
-      avatar: "", // Initialize avatar as an empty string
+      birthDate: null,
+      avatarUrl: "",
       address: "",
-      linkedin: "",
-      github: "",
-      introduction: "",
+      linkedinUrl: "",
+      githubUrl: "",
+      personalDescription: "",
       languages: [{ language: "", proficiency: "" }], // Ensure it's initialized as an array with an object
       projects: [
         {
@@ -57,7 +55,7 @@ const CvInformationPage = () => {
           educationMajor: "",
         },
       ],
-      workExperiences: [
+      experiences: [
         {
           companyName: "",
           companyFirstDate: null,
@@ -90,7 +88,7 @@ const CvInformationPage = () => {
           ? new Date(edu.educationEndDate).toLocaleDateString("en-US")
           : "",
       })),
-      workExperiences: data.workExperiences.map((exp) => ({
+      experiences: data.experiences.map((exp) => ({
         ...exp,
         companyFirstDate: exp.companyFirstDate
           ? new Date(exp.companyFirstDate).toLocaleDateString("en-US")
@@ -119,7 +117,7 @@ const CvInformationPage = () => {
         {/* Form section */}
         <Form {...form}>
           <form
-            className="space-y-4 my-10 w-full"
+            className="space-y-5 my-10 w-full"
             onSubmit={form.handleSubmit(onSubmit)}
           >
             <FormProfile form={form} />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea"; // Ensure you have this import
 import { Label } from "@/components/ui/label";
 import {
   Form,
@@ -9,16 +9,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-const InputField = ({
+const TextareaField = ({
   control,
   name,
   placeholder,
-  type = "text",
-  icon,
   id,
   className,
   classNameLabel,
-  classNameInput,
+  classNameTextarea,
   labelName,
   htmlFor,
 }) => (
@@ -32,16 +30,12 @@ const InputField = ({
             <Label htmlFor={htmlFor} className={classNameLabel}>
               {labelName}
             </Label>
-            <div className={`flex items-center w-full mt-1 ${classNameInput}`}>
-              <Input
-                type={type}
+            <div className={`flex items-center w-full mt-1 ${classNameTextarea}`}>
+              <Textarea
                 placeholder={`Nhập ${placeholder.toLowerCase()}`}
                 {...field}
-                value={field.value ?? ""}
-                className={icon ? "pl-10 pr-4" : ""}
                 id={id}
               />
-              {icon && <div className="absolute left-2">{icon}</div>}
             </div>
           </div>
         </FormControl>
@@ -51,4 +45,4 @@ const InputField = ({
   />
 );
 
-export default InputField;
+export default TextareaField;

@@ -1,17 +1,10 @@
 import React from "react";
-import { Label } from "@/components/ui/label";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
-import TitleField from "@/components/titleField/TitleField";
-import { Textarea } from "@/components/ui/textarea";
-import { Input } from "@/components/ui/input";
 import { useFieldArray } from "react-hook-form";
+import TitleField from "@/components/titleField/TitleField";
 import Button from "@/components/button/Button"; // Assuming you have a Button component
 import IconPlusMath from "@/components/icons/IconPlusMath";
+import InputField from "@/components/fieldForm/InputField";
+import TextareaField from "@/components/fieldForm/TextareaField";
 
 const FormProject = ({ form }) => {
   const { fields, append, remove } = useFieldArray({
@@ -40,110 +33,55 @@ const FormProject = ({ form }) => {
       <div className="grid grid-cols-12 py-10 px-20">
         <div className="w-full grid col-start-1 col-end-10 gap-5 mt-5">
           {fields.map((field, index) => (
-            <div key={field.id} className="space-y-4 mb-5">
+            <div key={field.id} className="space-y-5 mb-5">
               {/* Project Name Field */}
-              <FormField
+              <InputField
                 control={form.control}
                 name={`projects.${index}.projectName`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <div className="flex items-center">
-                        <Label
-                          htmlFor={`projects.${index}.projectName`}
-                          className="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
-                        >
-                          Tên dự án
-                        </Label>
-                        <Input
-                          placeholder="Vui lòng mô tả dự án bạn đã tham gia"
-                          {...field}
-                          id={`projects.${index}.projectName`}
-                        />
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                labelName={"Tên dự án"}
+                placeholder="dự án bạn đã tham gia"
+                className={"flex items-center"}
+                classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
+                id={`projects.${index}.projectName`}
+                htmlFor={`projects.${index}.projectName`}
               />
 
               {/* Project Duration Field */}
-              <FormField
+              <InputField
                 control={form.control}
                 name={`projects.${index}.projectDuration`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <div className="flex items-center">
-                        <Label
-                          htmlFor={`projects.${index}.projectDuration`}
-                          className="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
-                        >
-                          Thời gian dự án
-                        </Label>
-                        <Input
-                          placeholder="Bao nhiêu tháng, từ thời gian nào"
-                          {...field}
-                          id={`projects.${index}.projectDuration`}
-                        />
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                labelName={"Thời gian dự án"}
+                placeholder="Bao nhiêu tháng, từ thời gian nào"
+                className={"flex items-center"}
+                classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
+                id={`projects.${index}.projectDuration`}
+                htmlFor={`projects.${index}.projectDuration`}
               />
 
               {/* Github Link Field */}
-              <FormField
+              <InputField
                 control={form.control}
                 name={`projects.${index}.githubLink`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <div className="flex items-center">
-                        <Label
-                          htmlFor={`projects.${index}.githubLink`}
-                          className="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
-                        >
-                          Link Github
-                        </Label>
-                        <Input
-                          placeholder="Nhập url repository của dự án"
-                          {...field}
-                          id={`projects.${index}.githubLink`}
-                        />
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                labelName={"Link Github"}
+                placeholder="url repository của dự án"
+                className={"flex items-center"}
+                classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
+                id={`projects.${index}.githubLink`}
+                htmlFor={`projects.${index}.githubLink`}
               />
 
               {/* Project Introduction Field */}
-              <FormField
+              <TextareaField
                 control={form.control}
                 name={`projects.${index}.projectIntroduction`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <div className="flex items-center">
-                        <Label
-                          htmlFor={`projects.${index}.projectIntroduction`}
-                          className="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
-                        >
-                          Giới thiệu dự án
-                        </Label>
-                        <Textarea
-                          placeholder="Giải quyết vấn đề, bài toán gì"
-                          {...field}
-                          id={`projects.${index}.projectIntroduction`}
-                        />
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                labelName={"Giới thiệu dự án"}
+                placeholder="Giải quyết vấn đề, bài toán gì"
+                className={"flex items-center"}
+                classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
+                id={`projects.${index}.projectIntroduction`}
+                htmlFor={`projects.${index}.projectIntroduction`}
               />
+
               {fields.length > 1 ? (
                 <div className="flex justify-end">
                   <button

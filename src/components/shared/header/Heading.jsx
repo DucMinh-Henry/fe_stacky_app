@@ -16,7 +16,7 @@ const Heading = () => {
   };
 
   return (
-    <header className="sticky top-0 z-20 bg-white shadow-md">
+    <header className="sticky top-0 z-50 bg-white shadow-md">
       <div className="container flex justify-between items-center text-[#212F3F] border-b border-b-[#E9EAEC] h-[64px] lg:max-w-[1748px]">
         <Logo></Logo>
         <div className="flex justify-between items-center gap-10">

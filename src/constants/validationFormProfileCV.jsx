@@ -1,15 +1,15 @@
 import { z } from "zod";
 
 export const profileCVSchema = z.object({
-  name: z.string().nonempty("Họ và Tên không được để trống"),
-  position: z.string().nonempty("Vị trí ứng tuyển không được để trống"),
-  email: z
+  fullName: z.string().nonempty("Họ và Tên không được để trống"),
+  jobPosition: z.string().nonempty("Vị trí ứng tuyển không được để trống"),
+  publicEmail: z
     .string()
     .email("Địa chỉ email không hợp lệ")
     .nonempty("Email không được để trống"),
-  phone: z.string().nonempty("Số điện thoại không được để trống"),
+  phoneNumber: z.string().nonempty("Số điện thoại không được để trống"),
   gender: z.string().nonempty("Giới tính không được để trống"),
-  dob: z
+  birthDate: z
     .date()
     .nullable()
     .refine((date) => !date || date <= new Date(), {
@@ -18,11 +18,13 @@ export const profileCVSchema = z.object({
     .refine((date) => date !== null, {
       message: "Ngày sinh không được để trống",
     }),
-  avatar: z.string().optional(),
+  avatarUrl: z.string().optional(),
   address: z.string().optional(),
-  linkedin: z.string().optional(),
-  github: z.string().optional(),
-  introduction: z.string().nonempty("Giới thiệu bản thân không được để trống"),
+  linkedinUrl: z.string().optional(),
+  githubUrl: z.string().optional(),
+  personalDescription: z
+    .string()
+    .nonempty("Giới thiệu bản thân không được để trống"),
 
   // Languages
   languages: z
@@ -65,7 +67,7 @@ export const profileCVSchema = z.object({
 
   // Programming Skills
   programmingSkills: z.string().optional(),
-  
+
   // Education
   educations: z
     .array(
@@ -89,15 +91,13 @@ export const profileCVSchema = z.object({
           .refine((date) => date !== null, {
             message: "Ngày kết thúc không được để trống",
           }),
-        educationMajor: z
-          .string()
-          .nonempty("Chuyên ngành không được để trống"),
+        educationMajor: z.string().nonempty("Chuyên ngành không được để trống"),
       })
     )
     .optional(),
-  
+
   // Work Experiences
-  workExperiences: z
+  experiences: z
     .array(
       z.object({
         companyName: z.string().nonempty("Tên công ty không được để trống"),
@@ -114,7 +114,8 @@ export const profileCVSchema = z.object({
           .date()
           .nullable()
           .refine((date) => !date || date <= new Date(), {
-            message: "Ngày kết thúc làm việc không được là ngày trong tương lai",
+            message:
+              "Ngày kết thúc làm việc không được là ngày trong tương lai",
           })
           .refine((date) => date !== null, {
             message: "Ngày kết thúc làm việc không được để trống",

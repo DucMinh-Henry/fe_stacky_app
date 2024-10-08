@@ -11,8 +11,13 @@ const ImageUploader = forwardRef(({ value, onChange }, ref) => {
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        setUploadedImage(reader.result);
-        onChange(reader.result); // Update form state
+        // Set uploadedImage as an object containing both file and preview URL
+        const imageData = {
+          file, // Store the actual file
+          preview: reader.result, // Store the preview URL
+        };
+        setUploadedImage(imageData);
+        onChange(imageData); // Update form state with the image object
       };
       reader.readAsDataURL(file);
     }
@@ -44,7 +49,7 @@ const ImageUploader = forwardRef(({ value, onChange }, ref) => {
               onMouseLeave={() => setIsHovered(false)}
             >
               <img
-                src={uploadedImage}
+                src={uploadedImage.preview}
                 alt="Uploaded"
                 className="w-full h-full object-cover rounded-md"
               />

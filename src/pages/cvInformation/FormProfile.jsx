@@ -1,6 +1,4 @@
 import React from "react";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   FormControl,
   FormField,
@@ -11,132 +9,78 @@ import TitleField from "@/components/titleField/TitleField";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import ImageUploader from "./ImageUploader";
 import dayjs from "dayjs"; // Import dayjs for handling date parsing
+import { Label } from "@/components/ui/label";
+import InputField from "@/components/fieldForm/InputField";
+import ImageUploader from "@/components/uploadImage/ImageUploader";
 
 const FormProfile = ({ form }) => {
+  const commonInputProps = {
+    className: "flex items-center",
+    classNameLabel:
+      "flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5 ant-form-item-required",
+  };
+
   return (
     <div className="bg-secondary p-5 rounded-xl">
       <TitleField children={"Thông tin cá nhân"} />
       <div className="grid grid-cols-12 py-10 px-20">
         <div className="grid col-start-1 col-end-9 w-full gap-5">
           {/* Name Field */}
-          <FormField
+          <InputField
             control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <div className="flex items-center">
-                    <Label
-                      htmlFor="name"
-                      className="flex items-center justify-between ant-form-item-required min-w-44 max-w-44 pr-3 leading-5"
-                    >
-                      Họ và Tên
-                    </Label>
-                    <Input placeholder="Vui lòng nhập họ và tên" {...field} />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            name="fullName"
+            placeholder="họ và tên"
+            labelName="Họ và Tên"
+            id="fullName"
+            {...commonInputProps}
           />
 
           {/* Current Position/Applied Position */}
-          <FormField
+          <InputField
             control={form.control}
-            name="position"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <div className="flex items-center">
-                    <Label
-                      htmlFor="position"
-                      className="ant-form-item-required flex items-center justify-between ant-form-item-required min-w-44 max-w-44 pr-3 leading-5"
-                    >
-                      Vị trí hiện tại / Vị trí ứng tuyển
-                    </Label>
-                    <Input placeholder="Vui lòng nhập vị trí" {...field} />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            name="jobPosition"
+            placeholder="vị trí"
+            labelName="Vị trí hiện tại / Vị trí ứng tuyển"
+            id="jobPosition"
+            {...commonInputProps}
           />
 
           {/* Email Field */}
-          <FormField
+          <InputField
             control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <div className="flex items-center">
-                    <Label
-                      htmlFor="email"
-                      className="ant-form-item-required flex items-center justify-between ant-form-item-required min-w-44 max-w-44 pr-3 leading-5"
-                    >
-                      Email
-                    </Label>
-                    <Input placeholder="Vui lòng nhập email" {...field} />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            name="publicEmail"
+            placeholder="email"
+            labelName="Email"
+            id="publicEmail"
+            {...commonInputProps}
           />
 
           {/* Phone Field */}
-          <FormField
+          <InputField
             control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <div className="flex items-center">
-                    <Label
-                      htmlFor="phone"
-                      className="ant-form-item-required flex items-center justify-between ant-form-item-required min-w-44 max-w-44 pr-3 leading-5"
-                    >
-                      Điện thoại
-                    </Label>
-                    <Input
-                      placeholder="Vui lòng nhập số điện thoại"
-                      {...field}
-                    />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            name="phoneNumber"
+            placeholder="số điện thoại"
+            labelName="Điện thoại"
+            id="phoneNumber"
+            {...commonInputProps}
           />
 
           {/* Gender Field */}
-          <FormField
+          <InputField
             control={form.control}
             name="gender"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <div className="flex items-center">
-                    <Label
-                      htmlFor="gender"
-                      className="ant-form-item-required flex items-center justify-between ant-form-item-required min-w-44 max-w-44 pr-3 leading-5"
-                    >
-                      Giới tính
-                    </Label>
-                    <Input placeholder="Vui lòng nhập giới tính" {...field} />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            placeholder="giới tính"
+            labelName="Giới tính"
+            id="gender"
+            {...commonInputProps}
           />
         </div>
+
         <div className="grid col-start-9 col-end-13 w-full">
           <FormField
             control={form.control}
-            name="avatar"
+            name="avatarUrl"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
@@ -150,17 +94,18 @@ const FormProfile = ({ form }) => {
             )}
           />
         </div>
+
         <div className="w-full grid col-start-1 col-end-10 gap-5 mt-5">
           {/* Date of Birth Field */}
           <FormField
             control={form.control}
-            name="dob"
+            name="birthDate"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
                   <div className="flex items-center">
                     <Label
-                      htmlFor="dob"
+                      htmlFor="birthDate"
                       className="ant-form-item-required flex items-center justify-between ant-form-item-required min-w-44 max-w-44 pr-3"
                     >
                       Ngày sinh
@@ -199,67 +144,36 @@ const FormProfile = ({ form }) => {
             )}
           />
           {/* Address Field */}
-          <FormField
+          <InputField
             control={form.control}
             name="address"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <div className="flex items-center">
-                    <Label
-                      htmlFor="address"
-                      className="flex items-center justify-between min-w-44 max-w-44 pr-3"
-                    >
-                      Địa chỉ
-                    </Label>
-                    <Input placeholder="Vui lòng nhập địa chỉ" {...field} />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            placeholder="địa chỉ"
+            className={"flex items-center"}
+            classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
+            labelName="Địa chỉ"
+            id="address"
           />
+
           {/* LinkedIn Field */}
-          <FormField
+          <InputField
             control={form.control}
-            name="linkedin"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <div className="flex items-center">
-                    <Label
-                      htmlFor="linkedin"
-                      className="flex items-center justify-between min-w-44 max-w-44 pr-3"
-                    >
-                      LinkedIn
-                    </Label>
-                    <Input placeholder="LinkedIn profile URL" {...field} />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            name="linkedinUrl"
+            placeholder="LinkedIn profile URL"
+            className={"flex items-center"}
+            classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
+            labelName="LinkedIn"
+            id="linkedinUrl"
           />
+
           {/* Github Field */}
-          <FormField
+          <InputField
             control={form.control}
-            name="github"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <div className="flex items-center">
-                    <Label
-                      htmlFor="github"
-                      className="flex items-center justify-between min-w-44 max-w-44 pr-3"
-                    >
-                      Github
-                    </Label>
-                    <Input placeholder="Github profile URL" {...field} />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            name="githubUrl"
+            placeholder="Github profile URL"
+            className={"flex items-center"}
+            classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
+            labelName="Github"
+            id="githubUrl"
           />
         </div>
       </div>

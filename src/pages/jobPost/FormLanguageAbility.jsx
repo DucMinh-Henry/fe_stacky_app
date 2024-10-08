@@ -78,8 +78,8 @@ const FormLanguageAbility = ({ form }) => {
   return (
     <div className="bg-secondary p-5 rounded-xl">
       <TitleField children={"Khả năng ngoại ngữ"} />
-      <div className="grid grid-cols-12 py-10 px-20">
-        <div className="w-full grid col-start-1 col-end-10 gap-5 mt-5">
+      <div className="py-10 px-20">
+        <div className="flex flex-col w-full gap-5 mt-5">
           {fields.map((language, index) => (
             <div
               className="flex justify-between items-center gap-5"

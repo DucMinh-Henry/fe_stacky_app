@@ -1,14 +1,6 @@
 import React from "react";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import TitleField from "@/components/titleField/TitleField";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import InputField from "@/components/fieldForm/InputField";
 
 const FormProgrammingSkills = ({ form }) => {
   return (
@@ -17,28 +9,15 @@ const FormProgrammingSkills = ({ form }) => {
       <TitleField children={"Kỹ năng lập trình"} />
       <div className="grid grid-cols-12 py-10 px-20">
         <div className="grid col-start-1 col-end-10 w-full gap-5">
-          <FormField
+          <InputField
             control={form.control}
-            name="programmingSkills"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <div className="flex items-center">
-                    <Label
-                      htmlFor="programmingSkills"
-                      className="flex items-center justify-between min-w-44 max-w-44 pr-3"
-                    >
-                      Các kỹ năng lập trình
-                    </Label>
-                    <Input
-                      placeholder="Vui lòng nhập tên kỹ năng. VD: Java, Python,…"
-                      {...field}
-                    />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            name={`programmingSkills`}
+            labelName={"Các kỹ năng lập trình"}
+            placeholder="Vui lòng nhập tên kỹ năng. VD: Java, Python,…"
+            className={"flex items-center"}
+            classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
+            id={`programmingSkills`}
+            htmlFor={`programmingSkills`}
           />
         </div>
       </div>

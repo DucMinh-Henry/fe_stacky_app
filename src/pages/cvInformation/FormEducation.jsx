@@ -13,9 +13,9 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
-import { Input } from "@/components/ui/input";
 import Button from "@/components/button/Button";
 import IconPlusMath from "@/components/icons/IconPlusMath";
+import InputField from "@/components/fieldForm/InputField";
 
 const FormEducation = ({ form }) => {
   const { fields, append, remove } = useFieldArray({
@@ -43,30 +43,16 @@ const FormEducation = ({ form }) => {
       <div className="grid grid-cols-12 py-10 px-20">
         <div className="grid col-start-1 col-end-10 w-full gap-5">
           {fields.map((education, index) => (
-            <div key={education.id} className="space-y-4 mb-5">
-              <FormField
+            <div key={education.id} className="space-y-5 mb-5">
+              <InputField
                 control={form.control}
                 name={`educations.${index}.educationName`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <div className="flex items-center">
-                        <Label
-                          htmlFor={`educationName-${index}`}
-                          className="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5 ant-form-item-required"
-                        >
-                          Tên trường cơ sở đào tạo chính quy
-                        </Label>
-                        <Input
-                          placeholder="Vui lòng nhập tên trường"
-                          {...field}
-                          id={`educationName-${index}`}
-                        />
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                labelName={"Tên trường cơ sở đào tạo chính quy"}
+                placeholder="tên trường cơ sở đào tạo chính quy"
+                className={"flex items-center"}
+                classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5 ant-form-item-required"
+                id={`educationName-${index}`}
+                htmlFor={`educationName-${index}`}
               />
               <div className="flex items-center gap-10">
                 <FormField
@@ -160,30 +146,17 @@ const FormEducation = ({ form }) => {
                   )}
                 />
               </div>
-              <FormField
+              <InputField
                 control={form.control}
                 name={`educations.${index}.educationMajor`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <div className="flex items-center">
-                        <Label
-                          htmlFor={`educationMajor-${index}`}
-                          className="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5 ant-form-item-required"
-                        >
-                          Ngành học
-                        </Label>
-                        <Input
-                          placeholder="Vui lòng nhập ngành học"
-                          {...field}
-                          id={`educationMajor-${index}`}
-                        />
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                labelName={"Ngành học"}
+                placeholder="ngành học"
+                className={"flex items-center"}
+                classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5 ant-form-item-required"
+                id={`educationMajor-${index}`}
+                htmlFor={`educationMajor-${index}`}
               />
+
               {fields.length > 1 && (
                 <div className="flex justify-end">
                   <button

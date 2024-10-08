@@ -13,7 +13,7 @@ const JobSummary = () => {
       <h2 className="font-semibold text-2xl mb-7">Front-end developer</h2>
       <div className="flex items-center justify-between mb-5">
         <ItemInfoJob
-          icon={<IconPrice></IconPrice>}
+          icon={<IconPrice className={"w-6 h-6"} color={"#fff"}></IconPrice>}
           title={"Mức lương"}
           children={"Thoả Thuận"}
         ></ItemInfoJob>

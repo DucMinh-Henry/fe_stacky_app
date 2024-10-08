@@ -2,16 +2,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Label } from "@/components/ui/label";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormField } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/Checkbox";
 import Button from "@/components/button/Button";
-import { z } from "zod"; // Import Zod for validation
 import axiosInstance from "@/lib/authorizedAxios";
 import toast from "react-hot-toast";
 import InputField from "@/components/fieldForm/InputField";
@@ -74,7 +67,7 @@ const FormRegisterEmployer = () => {
       </h2>
       <Form {...form}>
         <form
-          className="space-y-4 mb-5 w-full"
+          className="space-y-5 mb-5 w-full"
           onSubmit={form.handleSubmit(onSubmit)}
         >
           <p className="text-primary font-semibold mt-5 mb-2">
@@ -84,23 +77,27 @@ const FormRegisterEmployer = () => {
             control={form.control}
             name="privateEmail"
             placeholder="Email"
+            labelName={"Email"}
           />
           <InputField
             control={form.control}
             name="phoneNumber"
             placeholder="Số điện thoại"
+            labelName={"Số điện thoại"}
           />
           <InputField
             control={form.control}
             name="password"
             placeholder="Mật khẩu"
             type="password"
+            labelName={"Mật khẩu"}
           />
           <InputField
             control={form.control}
             name="confirmPassword"
             placeholder="Xác nhận mật khẩu"
             type="password"
+            labelName={"Xác nhận mật khẩu"}
           />
 
           <p className="text-primary font-semibold mt-5 mb-2">
@@ -110,16 +107,19 @@ const FormRegisterEmployer = () => {
             control={form.control}
             name="orgTaxNumber"
             placeholder="Mã số thuế"
+            labelName={"Mã số thuế"}
           />
           <InputField
             control={form.control}
             name="orgName"
             placeholder="Tên công ty hiển thị"
+            labelName={"Tên công ty "}
           />
 
           <SelectField
             control={form.control}
             name="orgField"
+            labelName={"Lĩnh vực"}
             placeholder="Lĩnh vực"
             options={[
               { value: "technology", label: "Công nghệ" },
@@ -130,6 +130,7 @@ const FormRegisterEmployer = () => {
           <SelectField
             control={form.control}
             name="orgScale"
+            labelName={"Kỹ năng công ty"}
             placeholder="Kỹ năng công ty"
             options={[
               { value: "management", label: "Quản lý" },
@@ -140,6 +141,7 @@ const FormRegisterEmployer = () => {
           <SelectField
             control={form.control}
             name="orgAddress"
+            labelName={"Trụ sở công ty"}
             placeholder="Trụ sở công ty"
             options={[
               { value: "hanoi", label: "Hà Nội" },

@@ -1,32 +1,17 @@
 import React from "react";
 
-const IconBag = () => {
+const IconBag = ({ color, className }) => {
   return (
     <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
+      viewBox="0 0 24 24"
+      id="briefcase-alt"
+      className={className}
     >
-      <rect width="24" height="24" fill="url(#pattern0_14_16)" />
-      <defs>
-        <pattern
-          id="pattern0_14_16"
-          patternContentUnits="objectBoundingBox"
-          width="1"
-          height="1"
-        >
-          <use xlinkHref="#image0_14_16" transform="scale(0.0104167)" />
-        </pattern>
-        <image
-          id="image0_14_16"
-          width="96"
-          height="96"
-          xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAACmUlEQVR4nO3cTU4UQRiH8dq4RFiYGFDXqBcQT4AxJiCHMOhV1IluUI8AEtkYEr2GRoc7+MXAyo88pjI1hiDTNcNU99sz7/+XsCKhq99n6O40TYcgIiIiIiIiIiJiBLgNvAS6wDGTiz/jM/ACWFHY4YNfAN5Qv11gXiH+H/5HmhO3pQgDDX3yT3v9bwGe0T/mW7kVvKN/wrWyFbyjf7Vj5VPwjjKXmud1HLwjo+0/f+qhAArgGvoNmGh4V4BHwH6632J5Qm3K4N5S3OeHwJLF4C8Bz4Ffje12e8UZvAIWmxr+XeDQeq9b6Dtwp+7hbwK/rfe0xeJsHtQ1/FUNfyR/gHulh7+ow87Yh6PLJQPEk4xY3OhLl5q62hnfzyKXqOk6PydeF68Bc2HGAXPA+oh3cTdLbHB/hOEvBJ9/Ru1mZvO2xIYOMhtZC04BG7kPZ4mN9DIbmfnDzjDAxcxsemFSmQ24v59O3fNRgGoKYEwBjCmAMQUwpgDGFMCYAhhTAGMKYEwBjLkMAFxL/2rUS197wLLRWnwFoD/8r2cs5Vv8nsF63AXYrVjOjsF63AXoVSzn0GA9CnDCDwWo/xO3x3DbClB/gOV0wj3tC3BVAZq7EtpJT+vFr22L4ae1VKp9A87/KD/fhgDrwSnyj6U0EqDr+MGsgzYEGES4H5+TCT6eBdoYZfhNBpAhFMCYAhhTAGMKYEwBjCmAMQUwpgDGFMCYAhhTAGMKYEwBjCmAMQWYgQC5f9SWOh8Ua/i18rPmQ4kAHeu9mGKPSwS4qVeVnUt8x9L1iQOkCPEVlTKeTpHhpwAXgPdjLsCzd3FmxQKciPBMry/LHnY6xYd/xjnhaTzDA0fV63HhKM3iCXCjtsGLiIiIiIiIiEiYdn8BYl7B4ibOyDcAAAAASUVORK5CYII="
-        />
-      </defs>
+      <path
+        fill={color}
+        d="M19,6.5H16v-1a3,3,0,0,0-3-3H11a3,3,0,0,0-3,3v1H5a3,3,0,0,0-3,3v9a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3v-9A3,3,0,0,0,19,6.5Zm-9-1a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1v1H10Zm10,13a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V13a21.27,21.27,0,0,0,3,.94v.59a1,1,0,0,0,2,0v-.21a23,23,0,0,0,3,.21,23,23,0,0,0,3-.21v.21a1,1,0,0,0,2,0v-.59A21.27,21.27,0,0,0,20,13Zm0-7.69a20.39,20.39,0,0,1-3,1V11.5a1,1,0,0,0-2,0v.74a20.11,20.11,0,0,1-6,0V11.5a1,1,0,0,0-2,0v.33a20.39,20.39,0,0,1-3-1V9.5a1,1,0,0,1,1-1H19a1,1,0,0,1,1,1Z"
+      ></path>
     </svg>
   );
 };

@@ -78,7 +78,7 @@ const FormSignInEmployer = () => {
     <div className="flex flex-col items-center justify-center p-10">
       <Form {...form}>
         <form
-          className="space-y-4 mb-5 w-full"
+          className="space-y-5 mb-5 w-full"
           onSubmit={form.handleSubmit(onSubmit)}
         >
           <InputField
@@ -86,12 +86,16 @@ const FormSignInEmployer = () => {
             name="email"
             placeholder="Email"
             icon={<IconEmail />}
+            classNameInput="w-full relative"
+            labelName={"Email"}
           />
           <InputField
             control={form.control}
             name="password"
-            placeholder="Password"
+            placeholder="Mật khẩu"
             icon={<IconPassword />}
+            classNameInput="w-full relative"
+            labelName={"Mật khẩu"}
           />
           <div className="w-full">
             <Button

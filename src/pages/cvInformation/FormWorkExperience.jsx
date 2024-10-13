@@ -15,26 +15,37 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
 import Button from "@/components/button/Button";
 import IconPlusMath from "@/components/icons/IconPlusMath";
-import { Textarea } from "@/components/ui/textarea";
 import InputField from "@/components/fieldForm/InputField";
 import TextareaField from "@/components/fieldForm/TextareaField";
 
-const FormWorkExperience = ({ form }) => {
+const FormWorkExperience = ({ form, checkNoExperience }) => {
   const { fields, append, remove } = useFieldArray({
     control: form.control,
     name: "experiences",
   });
 
-  const [noExperience, setNoExperience] = useState(false);
+  const [noExperience, setNoExperience] = useState(true);
+
+  // console.log(noExperience);
+
+  const handleCheckExp = () => {
+    setNoExperience(false);
+    checkNoExperience(noExperience); // Truyền dữ liệu lên component cha
+  };
+
+  const handleCheckInExp = () => {
+    setNoExperience(true);
+    checkNoExperience(noExperience); // Truyền dữ liệu lên component cha
+  };
 
   const handleAddWorkExperiences = (e) => {
     e.preventDefault();
     append({
       companyName: "",
-      companyFirstDate: null,
-      companyEndDate: null,
-      workPosition: "",
-      workDescription: "",
+      startDate: null,
+      endDate: null,
+      jobPosition: "",
+      previousJobDetails: "",
     });
   };
 
@@ -54,7 +65,7 @@ const FormWorkExperience = ({ form }) => {
                 ? "bg-primary text-white"
                 : "bg-white text-text1 border border-text3"
             }`}
-            onClick={() => setNoExperience(true)}
+            onClick={handleCheckInExp}
           >
             Chưa có kinh nghiệm
           </Button>
@@ -64,7 +75,7 @@ const FormWorkExperience = ({ form }) => {
                 ? "bg-primary text-white"
                 : "bg-white text-text1 border border-text3"
             }`}
-            onClick={() => setNoExperience(false)}
+            onClick={handleCheckExp}
           >
             Đã có kinh nghiệm
           </Button>
@@ -94,13 +105,13 @@ const FormWorkExperience = ({ form }) => {
                 <div className="flex items-center gap-10">
                   <FormField
                     control={form.control}
-                    name={`experiences.${index}.companyFirstDate`}
+                    name={`experiences.${index}.startDate`}
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
                           <div className="flex items-center">
                             <Label
-                              htmlFor={`companyFirstDate-${index}`}
+                              htmlFor={`startDate-${index}`}
                               className="flex items-center justify-between min-w-44 max-w-44 pr-3 ant-form-item-required"
                             >
                               Thời gian làm việc
@@ -135,13 +146,13 @@ const FormWorkExperience = ({ form }) => {
                   />
                   <FormField
                     control={form.control}
-                    name={`experiences.${index}.companyEndDate`}
+                    name={`experiences.${index}.endDate`}
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
                           <div className="flex items-center">
                             <Label
-                              htmlFor={`companyEndDate-${index}`}
+                              htmlFor={`endDate-${index}`}
                               className="flex items-center justify-between max-w-44 mr-10"
                             >
                               đến
@@ -177,23 +188,23 @@ const FormWorkExperience = ({ form }) => {
                 </div>
                 <InputField
                   control={form.control}
-                  name={`experiences.${index}.workPosition`}
+                  name={`experiences.${index}.jobPosition`}
                   labelName={"Vị trí công việc"}
                   placeholder="Vị trí công việc"
                   className={"flex items-center"}
                   classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5 ant-form-item-required"
-                  id={`experiences.${index}.workPosition`}
-                  htmlFor={`experiences.${index}.workPosition`}
+                  id={`experiences.${index}.jobPosition`}
+                  htmlFor={`experiences.${index}.jobPosition`}
                 />
                 <TextareaField
                   control={form.control}
-                  name={`experiences.${index}.workDescription`}
+                  name={`experiences.${index}.previousJobDetails`}
                   labelName={"Chi tiết công việc và vai trò vị trí"}
                   placeholder="chi tiết các công việc đã làm tại đây. Dự án/ trách nhiệm đã đảm nhận."
                   className={"flex items-center"}
                   classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5 ant-form-item-required"
-                  id={`experiences.${index}.workDescription`}
-                  htmlFor={`experiences.${index}.workDescription`}
+                  id={`experiences.${index}.previousJobDetails`}
+                  htmlFor={`experiences.${index}.previousJobDetails`}
                 />
                 {fields.length > 1 && (
                   <div className="flex justify-end">

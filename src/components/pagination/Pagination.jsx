@@ -9,28 +9,38 @@ import {
 } from "@/components/ui/pagination";
 
 const PaginationDemo = ({ dataBase, currentPage, onPageChange, PerPage }) => {
-  const [newsPerPage, setNewsPerPage] = useState(PerPage);
+  const [newsPerPage] = useState(PerPage);
 
+  // Tính tổng số trang dựa trên dữ liệu
+  const totalPages = Math.ceil(dataBase.length / newsPerPage);
+
+  // Tạo danh sách số trang
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(dataBase.length / newsPerPage); i++) {
+  for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
   }
 
-  // console.log(pageNumbers);
-  // console.log(Math.ceil(dataBase.length / newsPerPage));
-
+  // Chọn trang mới
   const choosePage = (pageNumber) => {
-    onPageChange(pageNumber);
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      onPageChange(pageNumber);
+    }
   };
 
+  // Chuyển đến trang tiếp theo
   const nextPage = () => {
-    onPageChange(currentPage + 1);
+    if (currentPage < totalPages) {
+      onPageChange(currentPage + 1);
+    }
   };
 
+  // Quay lại trang trước
   const previousPage = () => {
-    onPageChange(currentPage - 1);
+    if (currentPage > 1) {
+      onPageChange(currentPage - 1);
+    }
   };
-  // console.log(currentPage);
+
   return (
     <Pagination>
       <PaginationContent>
@@ -46,23 +56,30 @@ const PaginationDemo = ({ dataBase, currentPage, onPageChange, PerPage }) => {
             }
           />
         </PaginationItem>
+
+        {/* Chỉ hiển thị một số trang xung quanh trang hiện tại */}
         {pageNumbers.map((number) => (
           <PaginationItem key={number} onClick={() => choosePage(number)}>
             <PaginationLink
-              className={currentPage === number ? "bg-primary text-white" : ""}
+              className={
+                currentPage === number
+                  ? "bg-primary text-white"
+                  : "hover:text-primary"
+              }
               href={`#${number}`}
             >
               {number}
             </PaginationLink>
           </PaginationItem>
         ))}
+
         <PaginationItem>
           <PaginationNext
-            onClick={() => nextPage()}
-            disabled={currentPage === Math.ceil(dataBase.length / newsPerPage)}
+            onClick={nextPage}
+            disabled={currentPage === totalPages}
             aria-label="Next Page"
             className={
-              currentPage === Math.ceil(dataBase.length / newsPerPage)
+              currentPage === totalPages
                 ? "opacity-50 pointer-events-none"
                 : "cursor-pointer"
             }

@@ -15,7 +15,7 @@ const FormProgrammingSkills = ({ form }) => {
             labelName={"Các kỹ năng lập trình"}
             placeholder="Vui lòng nhập tên kỹ năng. VD: Java, Python,…"
             className={"flex items-center"}
-            classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
+            classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5 ant-form-item-required"
             id={`programmingSkills`}
             htmlFor={`programmingSkills`}
           />

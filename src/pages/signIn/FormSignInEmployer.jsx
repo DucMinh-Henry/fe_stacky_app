@@ -4,25 +4,26 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import IconEmail from "@/components/icons/IconEmail";
 import IconPassword from "@/components/icons/IconPassword";
 import Button from "@/components/button/Button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { useNavigate } from "react-router-dom";
 import { LoginRecruiterSchema } from "@/constants/validationFormLoginRecruiter";
 import axiosInstance from "@/lib/authorizedAxios";
 import toast from "react-hot-toast";
 import useAuth from "@/hooks/useAuth";
 import InputField from "@/components/fieldForm/InputField";
+import { Modal } from "@/components/ui/modal";
+import ModalResetPassword from "./ModalResetPassword";
+import { AlertModal } from "@/components/shared/AlertModal";
 
 const FormSignInEmployer = () => {
   const navigate = useNavigate();
   const { login } = useAuth(); // Sử dụng login từ context
   const [loading, setLoading] = useState(false); // Loading state
+  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [openUpdate, setOpenUpdate] = useState(false);
+  const onClose = () => setIsOpen(false);
+  const onCloseUpdate = () => setOpenUpdate(false);
 
   // Sử dụng hook form với zod validation
   const form = useForm({
@@ -46,9 +47,11 @@ const FormSignInEmployer = () => {
           password,
         });
 
-        console.log(data);
+        // console.log(data.accessToken);
 
-        const { userId, email: userEmail, role: roleName, accessToken } = data;
+        const { userId, role: roleName, accessToken } = data;
+
+        console.log(data);
 
         if (!accessToken || !userId) {
           throw new Error(
@@ -57,8 +60,9 @@ const FormSignInEmployer = () => {
         }
 
         // Lưu thông tin user và token vào localStorage và gọi hàm login từ context
-        const userInfo = { userId, email: userEmail, role: roleName };
+        const userInfo = { userId, role: roleName };
         login(userInfo, accessToken); // Sử dụng hàm login từ context để lưu user và token
+        console.log(userInfo);
 
         // Điều hướng sau khi đăng nhập thành công
         navigate("/");
@@ -73,6 +77,10 @@ const FormSignInEmployer = () => {
     },
     [login, navigate]
   );
+
+  const onConfirm = async () => {
+    console.log("111");
+  };
 
   return (
     <div className="flex flex-col items-center justify-center p-10">
@@ -96,6 +104,7 @@ const FormSignInEmployer = () => {
             icon={<IconPassword />}
             classNameInput="w-full relative"
             labelName={"Mật khẩu"}
+            type="password"
           />
           <div className="w-full">
             <Button
@@ -111,12 +120,28 @@ const FormSignInEmployer = () => {
         </form>
       </Form>
       <div className="flex items-center justify-end w-full">
-        <a
-          href="#"
+        <AlertModal
+          isOpen={open}
+          onClose={() => setOpen(false)}
+          onConfirm={onConfirm}
+          loading={loading}
+        />
+        <Modal
+          isOpen={openUpdate}
+          onClose={onCloseUpdate}
+          className={"!bg-white !px-1 min-w-[600px]"}
+          title="Quên mật khẩu"
+          description="Hãy kiểm tra email của bạn. Sau đó nhấn vào link trong hộp thư để đổi lại mật khẩu."
+        >
+          <ModalResetPassword modalClose={onCloseUpdate} />
+        </Modal>
+        <button
+          href=""
           className="text-transparent bg-clip-text bg-gradient-to-r from-[#48038C] to-[#00F0FF] hover:decoration-primary hover:underline hover:decoration-1"
+          onClick={() => setOpenUpdate(true)}
         >
           Quên mật khẩu?
-        </a>
+        </button>
       </div>
     </div>
   );

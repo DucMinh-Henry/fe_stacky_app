@@ -4,6 +4,7 @@ import IconGithub from "@/components/icons/IconGithub";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "@/api/axios";
 import useAuth from "@/hooks/useAuth";
+import axiosInstance from "@/lib/authorizedAxios";
 
 const FormSignInCandidate = () => {
   const location = useLocation();
@@ -40,7 +41,7 @@ const FormSignInCandidate = () => {
   const handleTokenRetrieval = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:4080/auth/get-tokens", {
+      const response = await axiosInstance.get("/auth/get-access-token", {
         withCredentials: true,
       });
       const { accessToken } = response.data;

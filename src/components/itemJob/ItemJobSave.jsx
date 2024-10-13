@@ -4,7 +4,7 @@ import IconPrice from "@/components/icons/IconPrice";
 
 const ItemJobSave = () => {
   return (
-    <div className="flex flex-col gap-5 bg-white p-5 rounded-lg border border-transparent hover:border hover:border-primary">
+    <div className="flex flex-col gap-5 bg-white p-5 rounded-lg border hover:border hover:border-primary">
       <div className="flex justify-between items-center gap-4">
         <div className="min-w-[80px] min-h-[80px]">
           <a href="">

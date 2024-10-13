@@ -6,7 +6,7 @@ import IconRank from "@/components/icons/IconRank";
 import IconUSerAcount from "@/components/icons/IconUSerAcount";
 import React from "react";
 
-const GeneralInfo = () => {
+const GeneralInfo = ({ jobData }) => {
   return (
     <div className="bg-secondary rounded-xl p-5 text-sm">
       <TitleField children={"Thông tin chung"}></TitleField>
@@ -19,17 +19,17 @@ const GeneralInfo = () => {
         <ItemInfo
           icon={<IconHourglass></IconHourglass>}
           title={"Kinh nghiệm"}
-          children={"1 - 2 năm kinh nghiệm"}
+          children={jobData.yearsOfExperience}
         ></ItemInfo>
         <ItemInfo
           icon={<IconUSerAcount color={"#FFF"}></IconUSerAcount>}
           title={"Số lượng tuyển"}
-          children={"2 Người"}
+          children={`${jobData.candidatesLimit} Người`}
         ></ItemInfo>
         <ItemInfo
           icon={<IconBag className={"w-6 h-6"} color={"#fff"}></IconBag>}
           title={"Loại công việc"}
-          children={"Nhân viên toàn thời gian"}
+          children={jobData.typeOfWork}
         ></ItemInfo>
         <ItemInfo
           icon={<IconGender></IconGender>}

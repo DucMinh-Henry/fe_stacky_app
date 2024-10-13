@@ -26,22 +26,22 @@ const SignInPage = () => {
               <div
                 className={`flex items-center justify-center w-full py-4 text-lg cursor-pointer ${
                   activeTab === "candidate"
-                    ? "border-b-4 border-primary font-semibold"
-                    : ""
+                    ? "border-b-4 border-primary font-medium"
+                    : "hover:text-primary"
                 }`}
                 onClick={() => setActiveTab("candidate")}
               >
-                <a href="#candidate">Ứng viên</a>
+                <span>Ứng viên</span>
               </div>
               <div
                 className={`flex items-center justify-center w-full py-4 text-lg cursor-pointer ${
                   activeTab === "employer"
-                    ? "border-b-4 border-primary font-semibold "
-                    : ""
+                    ? "border-b-4 border-primary font-medium "
+                    : "hover:text-primary"
                 }`}
                 onClick={() => setActiveTab("employer")}
               >
-                <a href="#employer">Nhà tuyển dụng</a>
+                <span>Nhà tuyển dụng</span>
               </div>
             </div>
             {activeTab === "candidate" ? (

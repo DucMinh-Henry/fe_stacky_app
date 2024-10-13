@@ -11,24 +11,24 @@ const Footer = () => {
         <Logo className={"mb-5"}></Logo>
         <div className="flex justify-between">
           <div className="flex flex-col">
-            <span className="text-lg font-semibold">Liên Hệ</span>
+            <span className="text-lg font-medium">Liên Hệ</span>
             <span>Hotline: +(123) 456-7890</span>
             <span>Mail: stacky@gmail.com</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-lg font-semibold">Ứng Viên</span>
+            <span className="text-lg font-medium">Ứng Viên</span>
             <span>Quản lý CV của bạn</span>
             <span>Công ty</span>
             <span>Tìm việc</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-lg font-semibold">Khu Vực</span>
+            <span className="text-lg font-medium">Khu Vực</span>
             <span>Hà Nội</span>
             <span>Đà Nẵng</span>
             <span>Hồ Chí Minh</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-lg font-semibold">Nhà Tuyển Dụng</span>
+            <span className="text-lg font-medium">Nhà Tuyển Dụng</span>
             <span>Đăng tuyển dụng</span>
             <span>Đăng ký nhà tuyển dụng</span>
             <span>Tìm hồ sơ</span>

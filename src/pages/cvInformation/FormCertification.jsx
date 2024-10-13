@@ -27,9 +27,9 @@ const FormCertification = ({ form }) => {
   const handleAddCertification = (e) => {
     e.preventDefault();
     append({
-      certificationName: "",
-      certificationDate: null,
-      certificationDetails: "",
+      certificateName: "",
+      dateOfReceipt: null,
+      certificateDetail: "",
     });
   };
 
@@ -47,23 +47,23 @@ const FormCertification = ({ form }) => {
             <div key={certification.id} className="space-y-5 mb-5">
               <InputField
                 control={form.control}
-                name={`certifications.${index}.certificationName`}
+                name={`certifications.${index}.certificateName`}
                 labelName={"Tên chứng chỉ"}
                 placeholder="mô tả dự án bạn đã tham gia"
                 className={"flex items-center"}
                 classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
-                id={`certificationName-${index}`}
-                htmlFor={`certificationName-${index}`}
+                id={`certificateName-${index}`}
+                htmlFor={`certificateName-${index}`}
               />
               <FormField
                 control={form.control}
-                name={`certifications.${index}.certificationDate`}
+                name={`certifications.${index}.dateOfReceipt`}
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
                       <div className="flex items-center">
                         <Label
-                          htmlFor={`certificationDate-${index}`}
+                          htmlFor={`dateOfReceipt-${index}`}
                           className="flex items-center justify-between min-w-44 max-w-44 pr-3"
                         >
                           Thời gian đạt
@@ -103,13 +103,13 @@ const FormCertification = ({ form }) => {
 
               <TextareaField
                 control={form.control}
-                name={`certifications.${index}.certificationDetails`}
+                name={`certifications.${index}.certificateDetail`}
                 labelName={"Thông tin chi tiết"}
                 placeholder="thông tin chi tiết chứng chỉ"
                 className={"flex items-center"}
                 classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
-                id={`certificationDetails-${index}`}
-                htmlFor={`certificationDetails-${index}`}
+                id={`certificateDetail-${index}`}
+                htmlFor={`certificateDetail-${index}`}
               />
               {fields.length > 1 && (
                 <div className="flex justify-end">

@@ -32,7 +32,6 @@ const FormRegisterEmployer = () => {
     try {
       registerEmployerSchema.parse(data); // Validate the form data
       const { confirmPassword, ...formData } = data; // Extract fields to exclude
-
       const response = await axiosInstance.post(
         `/auth/signup/recruiter`,
         formData
@@ -133,8 +132,8 @@ const FormRegisterEmployer = () => {
             labelName={"Kỹ năng công ty"}
             placeholder="Kỹ năng công ty"
             options={[
-              { value: "management", label: "Quản lý" },
-              { value: "software", label: "Phần mềm" },
+              { value: "Quản lý", label: "Quản lý" },
+              { value: "Phần mềm", label: "Phần mềm" },
               { value: "marketing", label: "Marketing" },
             ]}
           />
@@ -144,9 +143,9 @@ const FormRegisterEmployer = () => {
             labelName={"Trụ sở công ty"}
             placeholder="Trụ sở công ty"
             options={[
-              { value: "hanoi", label: "Hà Nội" },
-              { value: "hcm", label: "TP. Hồ Chí Minh" },
-              { value: "danang", label: "Đà Nẵng" },
+              { value: "Hà Nội", label: "Hà Nội" },
+              { value: "TP. Hồ Chí Minh", label: "TP. Hồ Chí Minh" },
+              { value: "Đà Nẵng", label: "Đà Nẵng" },
             ]}
           />
 

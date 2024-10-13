@@ -16,9 +16,9 @@ const FormProject = ({ form }) => {
     e.preventDefault();
     append({
       projectName: "",
-      projectDuration: "",
-      githubLink: "",
-      projectIntroduction: "",
+      projectTime: "",
+      urlRepo: "",
+      projectDescription: "",
     });
   };
 
@@ -49,37 +49,37 @@ const FormProject = ({ form }) => {
               {/* Project Duration Field */}
               <InputField
                 control={form.control}
-                name={`projects.${index}.projectDuration`}
+                name={`projects.${index}.projectTime`}
                 labelName={"Thời gian dự án"}
                 placeholder="Bao nhiêu tháng, từ thời gian nào"
                 className={"flex items-center"}
                 classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
-                id={`projects.${index}.projectDuration`}
-                htmlFor={`projects.${index}.projectDuration`}
+                id={`projects.${index}.projectTime`}
+                htmlFor={`projects.${index}.projectTime`}
               />
 
               {/* Github Link Field */}
               <InputField
                 control={form.control}
-                name={`projects.${index}.githubLink`}
+                name={`projects.${index}.urlRepo`}
                 labelName={"Link Github"}
                 placeholder="url repository của dự án"
                 className={"flex items-center"}
                 classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
-                id={`projects.${index}.githubLink`}
-                htmlFor={`projects.${index}.githubLink`}
+                id={`projects.${index}.urlRepo`}
+                htmlFor={`projects.${index}.urlRepo`}
               />
 
               {/* Project Introduction Field */}
               <TextareaField
                 control={form.control}
-                name={`projects.${index}.projectIntroduction`}
+                name={`projects.${index}.projectDescription`}
                 labelName={"Giới thiệu dự án"}
                 placeholder="Giải quyết vấn đề, bài toán gì"
                 className={"flex items-center"}
                 classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
-                id={`projects.${index}.projectIntroduction`}
-                htmlFor={`projects.${index}.projectIntroduction`}
+                id={`projects.${index}.projectDescription`}
+                htmlFor={`projects.${index}.projectDescription`}
               />
 
               {fields.length > 1 ? (

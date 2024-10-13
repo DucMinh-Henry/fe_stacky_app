@@ -19,10 +19,13 @@ const CvUploadedPage = () => {
               đã ứng tuyển:
             </p>
             <span className="text-sm font-semibold text-accepted rounded-md">
-              {"3"} ACCEPTED
+              {"3"} Đã đăng bài
+            </span>
+            <span className="text-sm font-semibold text-primary rounded-md">
+              {"2"} Chờ xét duyệt
             </span>
             <span className="text-sm font-semibold text-rejected rounded-md">
-              {"2"} REJECTED
+              {"2"} Không được duyệt
             </span>
           </div>
           <div className="flex flex-col gap-5">

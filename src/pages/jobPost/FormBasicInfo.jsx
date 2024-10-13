@@ -65,6 +65,20 @@ const FormBasicInfo = ({ form }) => {
             ]}
           />
 
+          {/* Job Type Field */}
+          <SelectField
+            control={form.control}
+            name={`genderRequired`} // Adjust field name structure
+            labelName={"Giới Tính"}
+            placeholder="Chọn giới tính"
+            {...commonInputProps}
+            options={[
+              { value: "men", label: "Nam" },
+              { value: "women", label: "Nữ" },
+              { value: "men/women", label: "Nam / Nữ" },
+            ]}
+          />
+
           {/* Work Location Field */}
           <InputField
             control={form.control}
@@ -79,7 +93,7 @@ const FormBasicInfo = ({ form }) => {
           <InputField
             control={form.control}
             name="jobSalary"
-            placeholder="VD: 10 - 15 triệu VND/tháng"
+            placeholder="VD: 10 - 15 triệu, Thỏa thuận"
             labelName="Mức lương"
             id="jobSalary"
             {...commonInputProps}

@@ -21,11 +21,11 @@ const NavbarEmployer = () => {
       label: "Tìm kiếm ứng viên",
       path: "/search-candidates",
     },
-    { icon: IconManager, label: "Quản lý công việc", path: "/manager" },
+    { icon: IconManager, label: "Quản lý công việc", path: "/job-manager" },
   ];
 
   return (
-    <div className="flex flex-col gap-5 w-full p-5">
+    <div className="flex flex-col gap-5 w-full p-5 mb-5">
       <div className="flex flex-col gap-2">
         {navItems.map((item, index) => (
           <ItemNavbar

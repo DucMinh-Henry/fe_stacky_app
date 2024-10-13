@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import IconHeart from "@/components/icons/IconHeart";
 import IconNotification from "@/components/icons/IconNotification";
 import IconAvatar from "@/components/icons/IconAvatar";
@@ -7,18 +7,25 @@ import IconDropdown from "@/components/icons/IconDropdown";
 import Logo from "@/components/icons/Logo";
 import useAuth from "@/hooks/useAuth";
 import IconSignUp from "@/components/icons/IconSignUp";
+
 const Heading = () => {
   const { user, logout } = useAuth();
-  const [isRotated, setIsRotated] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const handleClickAvatar = () => {
-    setIsRotated(!isRotated);
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
   };
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <div className="container flex justify-between items-center text-[#212F3F] border-b border-b-[#E9EAEC] h-[64px] lg:max-w-[1748px]">
-        <Logo></Logo>
+        <Link to={"/"}>
+          <Logo />
+        </Link>
         <div className="flex justify-between items-center gap-10">
           <ItemMain url={"/"}>Trang chủ</ItemMain>
           <ItemMain url={"/company"}>Công ty</ItemMain>
@@ -29,40 +36,38 @@ const Heading = () => {
           {user ? (
             <div className="flex justify-between items-center ">
               <ItemNotification
-                icon={<IconHeart></IconHeart>}
+                icon={<IconHeart />}
                 children={"99"}
                 url={"/job-save"}
-              ></ItemNotification>
+              />
               <ItemNotification
-                icon={<IconNotification></IconNotification>}
+                icon={<IconNotification />}
                 children={"99"}
                 className={"mx-5"}
-              ></ItemNotification>
-              <div className="relative">
-                <button
-                  className="flex justify-between items-center gap-10 px-5 rounded-md hover:bg-secondary"
-                  onClick={handleClickAvatar}
-                >
+              />
+              <div
+                className="relative"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button className="flex justify-between items-center gap-10 px-5 rounded-md hover:bg-secondary z-10">
                   <IconAvatar />
-                  <IconDropdown
-                    className={`transition-transform duration-500 ${
-                      isRotated ? "rotate-180" : ""
-                    }`}
-                  />
+                  <IconDropdown />
                 </button>
-                {isRotated && (
-                  <div className="absolute flex flex-col items-center bg-white min-w-[200px] right-0 z-10 shadow-md rounded-md top-[54px]">
+                <div className="absolute after:contents w-full h-4 top-12"></div>
+                {isHovered && (
+                  <div className="absolute flex flex-col items-center bg-white min-w-[200px] right-0 z-50 shadow-md rounded-md top-[54px]">
                     <ItemDropdown
                       url={"/"}
                       icon={<IconSignUp />}
                       children={"Thông tin cá nhân"}
-                    ></ItemDropdown>
+                    />
                     <ItemDropdown
                       url={"/account.stacky.vn"}
                       icon={<IconSignUp />}
                       children={"Đăng xuất"}
                       onClick={logout}
-                    ></ItemDropdown>
+                    />
                   </div>
                 )}
               </div>

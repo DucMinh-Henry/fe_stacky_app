@@ -13,6 +13,7 @@ import dayjs from "dayjs"; // Import dayjs for handling date parsing
 import { Label } from "@/components/ui/label";
 import InputField from "@/components/fieldForm/InputField";
 import ImageUploader from "@/components/uploadImage/ImageUploader";
+import SelectField from "@/components/fieldForm/SelectField";
 
 const FormProfile = ({ form }) => {
   const commonInputProps = {
@@ -66,14 +67,18 @@ const FormProfile = ({ form }) => {
             {...commonInputProps}
           />
 
-          {/* Gender Field */}
-          <InputField
+          {/* Type Field */}
+          <SelectField
             control={form.control}
-            name="gender"
-            placeholder="giới tính"
-            labelName="Giới tính"
-            id="gender"
+            name="gender" // Adjust field name structure
+            labelName={"Giới Tính"}
+            placeholder="Chọn giới tính"
             {...commonInputProps}
+            options={[
+              { value: "men", label: "Nam" },
+              { value: "women", label: "Nữ" },
+              { value: "men/women", label: "Nam / Nữ" },
+            ]}
           />
         </div>
 
@@ -106,7 +111,7 @@ const FormProfile = ({ form }) => {
                   <div className="flex items-center">
                     <Label
                       htmlFor="birthDate"
-                      className="ant-form-item-required flex items-center justify-between ant-form-item-required min-w-44 max-w-44 pr-3"
+                      className="ant-form-item-required flex items-center justify-between min-w-44 max-w-44 pr-3"
                     >
                       Ngày sinh
                     </Label>
@@ -148,10 +153,21 @@ const FormProfile = ({ form }) => {
             control={form.control}
             name="address"
             placeholder="địa chỉ"
+            classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5 ant-form-item-required"
             className={"flex items-center"}
-            classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
             labelName="Địa chỉ"
             id="address"
+          />
+
+          {/* Github Field */}
+          <InputField
+            control={form.control}
+            name="githubUrl"
+            placeholder="Github profile URL"
+            className={"flex items-center"}
+            classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5 ant-form-item-required"
+            labelName="Github"
+            id="githubUrl"
           />
 
           {/* LinkedIn Field */}
@@ -163,17 +179,6 @@ const FormProfile = ({ form }) => {
             classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
             labelName="LinkedIn"
             id="linkedinUrl"
-          />
-
-          {/* Github Field */}
-          <InputField
-            control={form.control}
-            name="githubUrl"
-            placeholder="Github profile URL"
-            className={"flex items-center"}
-            classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5"
-            labelName="Github"
-            id="githubUrl"
           />
         </div>
       </div>

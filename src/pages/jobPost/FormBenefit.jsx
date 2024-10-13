@@ -12,7 +12,7 @@ const FormBenefit = ({ form }) => {
 
   return (
     <div className="bg-secondary p-5 rounded-xl">
-      <TitleField children={"Yêu cầu chung"} />
+      <TitleField children={"Phúc lợi"} />
       <div className="flex flex-col gap-5 w-full">
         <TextareaField
           control={form.control}
@@ -21,7 +21,8 @@ const FormBenefit = ({ form }) => {
           placeholder="Phúc lợi dành cho nhân viên"
           id={`jobBenefit`}
           htmlFor={`jobBenefit`}
-          {...commonInputProps}
+          className="flex items-center"
+          classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5 ant-form-item-required"
         />
         <InputField
           control={form.control}

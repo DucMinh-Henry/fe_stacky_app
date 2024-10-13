@@ -26,10 +26,10 @@ const FormEducation = ({ form }) => {
   const handleAddEducation = (e) => {
     e.preventDefault();
     append({
-      educationName: "",
-      educationFirstDate: null,
-      educationEndDate: null,
-      educationMajor: "",
+      schoolName: "",
+      startDate: null,
+      finishDate: null,
+      fieldName: "",
     });
   };
 
@@ -46,24 +46,24 @@ const FormEducation = ({ form }) => {
             <div key={education.id} className="space-y-5 mb-5">
               <InputField
                 control={form.control}
-                name={`educations.${index}.educationName`}
+                name={`educations.${index}.schoolName`}
                 labelName={"Tên trường cơ sở đào tạo chính quy"}
                 placeholder="tên trường cơ sở đào tạo chính quy"
                 className={"flex items-center"}
                 classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5 ant-form-item-required"
-                id={`educationName-${index}`}
-                htmlFor={`educationName-${index}`}
+                id={`schoolName-${index}`}
+                htmlFor={`schoolName-${index}`}
               />
               <div className="flex items-center gap-10">
                 <FormField
                   control={form.control}
-                  name={`educations.${index}.educationFirstDate`}
+                  name={`educations.${index}.startDate`}
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
                         <div className="flex items-center">
                           <Label
-                            htmlFor={`educationFirstDate-${index}`}
+                            htmlFor={`startDate-${index}`}
                             className="flex items-center justify-between min-w-44 max-w-44 pr-3 ant-form-item-required"
                           >
                             Thời gian làm việc
@@ -102,13 +102,13 @@ const FormEducation = ({ form }) => {
                 />
                 <FormField
                   control={form.control}
-                  name={`educations.${index}.educationEndDate`}
+                  name={`educations.${index}.finishDate`}
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
                         <div className="flex items-center">
                           <Label
-                            htmlFor={`educationEndDate-${index}`}
+                            htmlFor={`finishDate-${index}`}
                             className="flex items-center justify-between max-w-44 mr-10"
                           >
                             đến
@@ -148,13 +148,13 @@ const FormEducation = ({ form }) => {
               </div>
               <InputField
                 control={form.control}
-                name={`educations.${index}.educationMajor`}
+                name={`educations.${index}.fieldName`}
                 labelName={"Ngành học"}
                 placeholder="ngành học"
                 className={"flex items-center"}
                 classNameLabel="flex items-center justify-between min-w-44 max-w-44 pr-3 leading-5 ant-form-item-required"
-                id={`educationMajor-${index}`}
-                htmlFor={`educationMajor-${index}`}
+                id={`fieldName-${index}`}
+                htmlFor={`fieldName-${index}`}
               />
 
               {fields.length > 1 && (

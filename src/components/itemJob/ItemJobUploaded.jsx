@@ -4,7 +4,7 @@ import imgCompany from "@/components/image/imgCompany.png";
 
 const ItemJobUploaded = () => {
   return (
-    <div className="flex flex-col gap-5 text-sm bg-white p-3 rounded-lg border border-transparent hover:border hover:border-primary hover:bg-white">
+    <div className="flex flex-col gap-5 text-sm bg-white p-3 rounded-lg border hover:border hover:border-primary hover:bg-white">
       <div className="flex justify-between gap-5">
         <div className="min-w-[80px] min-h-[80px]">
           <a href="">

@@ -1,5 +1,5 @@
+import InputField from "@/components/fieldForm/InputField";
 import SelectField from "@/components/fieldForm/SelectField";
-import TextareaField from "@/components/fieldForm/TextareaField";
 import TitleField from "@/components/titleField/TitleField";
 import React from "react";
 
@@ -18,7 +18,7 @@ const FormRequirement = ({ form }) => {
         <div className="flex flex-col gap-5 w-[500px]">
           <SelectField
             control={form.control}
-            name={`educationLevel`} // Changed field name
+            name={`educationRequired`} // Changed field name
             labelName={"Trình độ học vấn"}
             placeholder="Chọn trình độ học vấn"
             {...commonInputProps}
@@ -32,7 +32,7 @@ const FormRequirement = ({ form }) => {
           />
           <SelectField
             control={form.control}
-            name={`workExperience`} // Changed field name
+            name={`yearsOfExperience`} // Changed field name
             labelName={"Kinh nghiệm làm việc"}
             placeholder="Chọn kinh nghiệm làm việc"
             {...commonInputProps}
@@ -45,7 +45,7 @@ const FormRequirement = ({ form }) => {
           />
           <SelectField
             control={form.control}
-            name={`requiredIndustry`} // Changed field name
+            name={`typeOfIndustry`} // Changed field name
             labelName={"Ngành nghề yêu cầu"}
             placeholder="Chọn ngành nghề yêu cầu"
             {...commonInputProps}
@@ -58,22 +58,28 @@ const FormRequirement = ({ form }) => {
             ]}
           />
         </div>
-        <TextareaField
+        <InputField
           control={form.control}
-          name={`certificateRequired`}
-          labelName={"Chứng chỉ cần thiết"}
-          placeholder="chứng chỉ cần thiết"
-          id={`certificateRequired`}
-          htmlFor={`certificateRequired`}
+          name="staffLevel"
+          placeholder="Vị trí tuyển dụng"
+          labelName="Vị trí tuyển dụng"
+          id="staffLevel"
           {...commonInputProps}
         />
-        <TextareaField
+        <InputField
           control={form.control}
-          name={`professionalSkills`}
-          labelName={"Kỹ năng chuyên môn"}
-          placeholder="kỹ năng chuyên môn"
-          id={`professionalSkills`}
-          htmlFor={`professionalSkills`}
+          name="certificateRequired"
+          placeholder="Chứng chỉ cần thiết"
+          labelName="Chứng chỉ cần thiết"
+          id="certificateRequired"
+          {...commonInputProps}
+        />
+        <InputField
+          control={form.control}
+          name="professionalSkills"
+          placeholder="Kỹ năng chuyên môn"
+          labelName="Kỹ năng chuyên môn"
+          id="professionalSkills"
           {...commonInputProps}
         />
       </div>

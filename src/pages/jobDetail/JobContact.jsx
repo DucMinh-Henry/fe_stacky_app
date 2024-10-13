@@ -1,7 +1,7 @@
 import TitleField from "@/components/titleField/TitleField";
 import React from "react";
 
-const JobContact = () => {
+const JobContact = ({}) => {
   return (
     <div className="bg-secondary rounded-xl p-5">
       <TitleField children={"Thông tin liên hệ"}></TitleField>

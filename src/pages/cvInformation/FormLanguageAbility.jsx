@@ -67,7 +67,7 @@ const FormLanguageAbility = ({ form }) => {
 
   const handleAddLanguage = (e) => {
     e.preventDefault(); // Prevent form submission on button click
-    append({ language: "", proficiency: "" });
+    append({ language: "", level: "" });
   };
 
   const handleRemoveLanguage = (index, e) => {
@@ -102,7 +102,7 @@ const FormLanguageAbility = ({ form }) => {
               {/* Proficiency Level Select Field */}
               <SelectField
                 control={form.control}
-                name={`languages.${index}.proficiency`} // Adjust field name structure
+                name={`languages.${index}.level`} // Adjust field name structure
                 labelName={"Mức độ thông thạo"}
                 placeholder="Chọn mức độ"
                 options={[
